@@ -36,6 +36,8 @@ POSCON_CODES = [
     "JCP2022_915132",
 ]
 NEGCON_CODES = [
+    "DMSO",
+    "control",
     "JCP2022_800001",
     "JCP2022_800002",
     "JCP2022_033924",
@@ -96,7 +98,7 @@ def build_path(row: pd.Series) -> str:
 
 def get_plate_metadata(sources: list[str], plate_types: list[str]) -> pd.DataFrame:
     """Create filtered metadata DataFrame"""
-    plate_metadata = pd.read_csv("./inputs/metadata/plate.csv.gz")
+    plate_metadata = pd.read_csv("/home/llanos/2024_10_07_cpg0014_Adipocytes/jump-profiling-recipe/inputs/plate.csv.gz")
     # Filter plates from source_4
     if "ORF" in plate_types:
         redlist = get_orf_plate_redlist(plate_types)
@@ -138,7 +140,8 @@ def get_well_metadata(plate_types: list[str]):
 
 def load_metadata(sources: list[str], plate_types: list[str]):
     """Load metadata only"""
-    plate = get_plate_metadata(sources, plate_types)
-    well = get_well_metadata(plate_types)
-    meta = well.merge(plate, on=["Metadata_Source", "Metadata_Plate"])
+    meta=pd.read_csv('/home/llanos/2024_10_07_cpg0014_Adipocytes/jump-profiling-recipe/inputs/plate.csv.gz', compression='gzip')
+    #plate = get_plate_metadata(sources, plate_types)
+    #well = get_well_metadata(plate_types)
+    #meta = well.merge(plate, on=["Metadata_Source", "Metadata_Plate"])
     return meta
