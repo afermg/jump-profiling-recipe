@@ -1,17 +1,17 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-  echo "Error: Missing argument."
-  echo "Usage: $0 (orf|crispr|compound)"
-  exit 1
+    echo "Error: Missing argument."
+    echo "Usage: $0 (orf|crispr|compound)"
+    exit 1
 fi
 
 # Validate argument value
 pert="$1"
 if [[ ! "$pert" =~ ^(orf|crispr|compound)$ ]]; then
-  echo "Error: Invalid argument. Please provide 'orf', 'crispr', or 'compound'."
-  echo "Usage: $0 (orf|crispr|compound)"
-  exit 1
+    echo "Error: Invalid argument. Please provide 'orf', 'crispr', or 'compound'."
+    echo "Usage: $0 (orf|crispr|compound)"
+    exit 1
 fi
 
 configfile="inputs/$pert.json"
