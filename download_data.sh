@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ $# -ne 1 ]; then
     echo "Error: Missing argument."
     echo "Usage: $0 (orf|crispr|compound)"
@@ -28,4 +30,3 @@ wget https://github.com/jump-cellpainting/datasets/blob/main/metadata/plate.csv.
 wget https://github.com/jump-cellpainting/datasets/blob/main/metadata/well.csv.gz?raw=true -O inputs/metadata/well.csv.gz
 # shellcheck disable=SC2086
 wget https://github.com/jump-cellpainting/datasets/blob/main/metadata/$pert.csv.gz?raw=true -O inputs/metadata/${pert}.csv.gz
-
